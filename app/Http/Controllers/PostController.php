@@ -8,6 +8,13 @@ class PostController extends Controller
 {
     public function index(Post $post)
     {
-        return $post->get();
+        return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
     }
-}
+    @params Object Post 
+ *  @return Reposnse post view
+    
+    public function show(Post $post)
+    {
+        return view('posts/show')->with(['post' => $post]);
+    }
+ }
